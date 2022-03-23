@@ -46,7 +46,7 @@ public class WordsGrid : MonoBehaviour
 
                     if(normalLetterData.image == null || selectedLetterData.image == null)
                     {
-                        Debug.LogError("Sikimin Basi" + squareLetter);
+                        Debug.LogError("Failed" + squareLetter);
 
                         #if UNITY_EDITOR
 
