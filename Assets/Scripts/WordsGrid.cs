@@ -27,9 +27,50 @@ public class WordsGrid : MonoBehaviour
 
         var offset = new Vector2
         {
-
+            x = (squareRect.width * squareTransform.localScale.x + squareOffset) * 0.01f,
+            y = (squareRect.height * squareTransform.localScale.y + squareOffset) * 0.01f
         };
+
+        var startPosition = GetFirstSquarePosition();
+        int columnNumber = 0;
+        int rowNumber = 0;
+        
+        foreach (var square in _squareList)
+        {
+            if(rowNumber + 1 > currentGameData.selectedBoardData.Rows)
+            {
+                columnNumber++;
+                rowNumber = 0;
+            }
+
+            var positionX = startPosition.x + offset.x * columnNumber;
+            var positionY = startPosition.y - offset.y * rowNumber;
+
+            square.GetComponent<Transform>().position = new Vector2(positionX, positionY);
+            rowNumber++;
+        }
     }
+
+
+    private Vector2 GetFirstSquarePosition()
+    {
+        var startPosition = new Vector2(0f, transform.position.y);
+        var squareRect = _squareList[0].GetComponent<SpriteRenderer>().sprite.rect;
+        var squareTransform = _squareList[0].GetComponent<Transform>();
+        var squareSize = new Vector2(0f, 0f);
+
+        squareSize.x = squareRect.width * squareTransform.localScale.x;
+        squareSize.y = squareRect.height * squareTransform.localScale.y;
+
+        var midWidthPosition = (((currentGameData.selectedBoardData.Columns -1) * squareSize.x) /2) * 0.01f;
+        var midWidthHeight = (((currentGameData.selectedBoardData.Rows -1) * squareSize.y) /2) * 0.01f;
+
+        startPosition.x = (midWidthPosition != 0) ? midWidthPosition * -1 : midWidthPosition;
+        startPosition.y += midWidthHeight;
+
+        return startPosition;
+    }
+
 
     private void SpawnGridSquares()
     {
@@ -46,7 +87,7 @@ public class WordsGrid : MonoBehaviour
 
                     if(normalLetterData.image == null || selectedLetterData.image == null)
                     {
-                        Debug.LogError("Sikimin Basi" + squareLetter);
+                        Debug.LogError("Fail" + squareLetter);
 
                         #if UNITY_EDITOR
 

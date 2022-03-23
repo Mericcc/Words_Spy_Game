@@ -702,6 +702,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07e7f14c7dd5834aa89598251b34a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGameData: {fileID: 11400000, guid: add5d4f74e672154798c20ed7f36cf00, type: 2}
+  gridSquarePrefab: {fileID: 35501873459321267, guid: 217ced4941fcbdc49ac2a6fbe1185368, type: 3}
+  alphabetData: {fileID: 11400000, guid: d74ec6b69de41fd43964e587fd0c552d, type: 2}
+  squareOffset: 0.06
+  topPosition: 4.55
 --- !u!4 &1385141806
 Transform:
   m_ObjectHideFlags: 0
@@ -710,7 +715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385141804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.64603263, y: -0.85613096, z: -1.5533867}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -769,7 +774,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
